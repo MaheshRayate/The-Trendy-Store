@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 const ProductCard = ({
   _id,
   title,
@@ -17,7 +16,7 @@ const ProductCard = ({
         <img
           src={imageUrl}
           alt="t-shirt"
-          className="h-80 rounded object-cover sm:object-cover sm:object-left-top w-full"
+          className="h-80 rounded object-contain sm:object-cover sm:object-left-top w-full"
         />
         <div>
           <h3 className="font-inter my-1">{brand}</h3>
