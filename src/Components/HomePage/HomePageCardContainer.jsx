@@ -10,9 +10,9 @@ const HomePageCardContainer = ({
   topLavelCategory,
   thirdLavelCategory,
 }) => {
-  const { data, isLoadingmisError } = useFetchHomePageProducts(
+  const { data } = useFetchHomePageProducts(
     topLavelCategory,
-    thirdLavelCategory
+    thirdLavelCategory,
   );
 
   console.log(data);
@@ -40,7 +40,6 @@ const HomePageCardContainer = ({
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
         },
       },
       {
@@ -54,10 +53,11 @@ const HomePageCardContainer = ({
   };
   return (
     <div className="mx-auto w-[90%] my-10">
-      <h2 className="px-2 text-2xl font-inter  font-bold">{categoryTitle}</h2>
+      <h2 className="px-2 text-2xl font-inter font-bold">{categoryTitle}</h2>
       <div className="slider-container mt-2">
-        <Slider className=" home-card-container" {...settings}>
-          {data?.data?.products.map((product) => {
+        <Slider className="home-card-container" {...settings}>
+          {data?.data?.products.map((product, index) => {
+            if (index === 0) return;
             const id = nanoid();
             return <ProductCard key={id} {...product} />;
           })}
